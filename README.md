@@ -1,4 +1,4 @@
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/theendlessriver13/postgres-angle-avg/master.svg)](https://results.pre-commit.ci/latest/github/theendlessriver13/postgres-angle-avg/master)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jkittner/postgres-angle-avg/master.svg)](https://results.pre-commit.ci/latest/github/jkittner/postgres-angle-avg/master)
 
 # postgres-angle-avg
 
