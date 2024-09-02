@@ -11,14 +11,14 @@ This can be useful for e.g. component averaging of wind directions (not taking t
 
 ### Compilation
 
-This was tested against PostgreSQL 11, 12, 13 and 14. The function has to be compiled into a shared object.
+This was tested against PostgreSQL 12, 13, 14, 15 and 16. The function has to be compiled into a shared object.
 
 On Linux:
 
 compile the intermediate object file. The PostgreSQL development files (Header files) need to be present and included e.g. `postgresql-server-dev-12` on debian based OS.
 
 ```console
-cc -fpic -c angle_avg.c -lm -I /usr/include/postgresql/14/server
+cc -fpic -c angle_avg.c -lm -I /usr/include/postgresql/16/server
 ```
 
 create the shared object file
@@ -62,4 +62,20 @@ SELECT avg_angle(wind_direction) FROM wind;
      avg_angle
 --------------------
  4.999999999999996
+```
+
+### running the tests
+
+This repo uses `pytest` for testing the C and sql code. For running the tests you will
+have to have `docker` and the `compose` plugin installed. Then install the python
+requirements using:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+finally run the tests using:
+
+```bash
+pytest tests
 ```
