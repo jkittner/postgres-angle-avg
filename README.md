@@ -1,3 +1,4 @@
+[![ci](https://github.com/jkittner/postgres-angle-avg/actions/workflows/CI.yml/badge.svg)](https://github.com/jkittner/postgres-angle-avg/actions/workflows/CI.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jkittner/postgres-angle-avg/master.svg)](https://results.pre-commit.ci/latest/github/jkittner/postgres-angle-avg/master)
 
 # postgres-angle-avg
