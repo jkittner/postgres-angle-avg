@@ -9,6 +9,8 @@ This can be useful for e.g. component averaging of wind directions (not taking t
 
 ## Setup
 
+version 0.1.0
+
 ### Compilation
 
 This was tested against PostgreSQL 12, 13, 14, 15 and 16. The function has to be compiled into a shared object.
