@@ -1,0 +1,61 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: [12, 13, 14, 15, 16]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: install dependencies
+      run: pip install -r requirements-dev.txt
+    - name: run tests
+      run: |
+        coverage run -m pytest
+        coverage report
+      env:
+        PG_VERSION: ${{ matrix.pg-version }}
+  build-binaries:
+    needs: [tests]
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: [12, 13, 14, 15, 16]
+    steps:
+    - uses: actions/checkout@v4
+    - name: install build dependencies
+      run: |
+        sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+        sudo apt-get update
+        sudo apt-get -y install postgresql-server-dev-${{ matrix.pg-version }} gcc build-essential --no-install-recommends
+    - name: build binaries per postgres pg-version
+      run: |
+        cc -fPIC -Werror -Wall -c angle_avg.c -lm -I /usr/include/postgresql/${{ matrix.pg-version }}/server
+        cc -shared -o angle_avg_pg${{ matrix.pg-version }}.so angle_avg.o
+    - name: get builds as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: shared object angle_avg_pg${{ matrix.pg-version }}.so
+        path: angle_avg_pg${{ matrix.pg-version }}.so
+  merge:
+    runs-on: ubuntu-latest
+    needs: [build-binaries]
+    steps:
+      - name: merge artifacts
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: shared_object_files
+          delete-merged: true
+          retention-days: 1

@@ -1,0 +1,11 @@
+services:
+  db:
+    build:
+      context: .
+      args:
+        VERSION: ${PG_VERSION}
+    ports:
+      - "5432:5432"
+    container_name: db
+    environment:
+      POSTGRES_PASSWORD: "test"

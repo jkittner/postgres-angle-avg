@@ -1,2 +1,7 @@
 *.o
+*.pyc
 *.so
+*venv
+.coverage
+.pytest_cache
+.vscode
