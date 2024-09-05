@@ -35,9 +35,9 @@ For other platforms see [Compiling and Linking Dynamically-Loaded Functions](htt
 
 ### SQL Function Creation
 
-The `angle_avg.so` needs to be placed in a directory, which can be accessed by PostgreSQL e.g. `/usr/local/lib/funcs/angle_avg.so`.
+The `angle_avg.so` needs to be placed in a directory, which can be accessed by PostgreSQL. Ideally `/usr/lib/postgresql/16/lib/angle_avg.so` or what `pg_config --pkglibdir` returns.
 
-Change the `angle_avg.sql` file so it matches the directory. Execute the `angle_avg.sql` file and now the function `avg_angle` is available.
+Execute the `angle_avg.sql` file and now the function `avg_angle` is available.
 
 ### Example
 

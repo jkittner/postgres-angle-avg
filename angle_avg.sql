@@ -1,16 +1,16 @@
 CREATE OR REPLACE FUNCTION complex_angle_accum(float8[], DOUBLE PRECISION)
 RETURNS float8[]
-     AS '/usr/local/lib/funcs/angle_avg', 'complex_angle_accum'
+     AS '$libdir/angle_avg', 'complex_angle_accum'
      LANGUAGE C STRICT;
 
 CREATE OR REPLACE FUNCTION complex_angle_avg(float8[])
 RETURNS DOUBLE PRECISION
-     AS '/usr/local/lib/funcs/angle_avg', 'complex_angle_avg'
+     AS '$libdir/angle_avg', 'complex_angle_avg'
      LANGUAGE C STRICT;
 
 CREATE OR REPLACE FUNCTION complex_angle_combine(float8[], float8[])
 RETURNS float8[]
-     AS '/usr/local/lib/funcs/angle_avg', 'complex_angle_combine'
+     AS '$libdir/angle_avg', 'complex_angle_combine'
      LANGUAGE C STRICT;
 
 CREATE OR REPLACE AGGREGATE avg_angle(DOUBLE PRECISION)

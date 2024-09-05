@@ -12,11 +12,9 @@ RUN : \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/local/lib/funcs
-
 COPY ./angle_avg.c .
 COPY ./angle_avg.sql .
 
 RUN : \
     && cc -fPIC -Werror -Wall -c angle_avg.c -lm -I /usr/include/postgresql/${VERSION}/server \
-    && cc -shared -o angle_avg.so angle_avg.o
+    && cc -shared -o $(pg_config --pkglibdir)/angle_avg.so angle_avg.o
