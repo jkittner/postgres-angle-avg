@@ -21,7 +21,7 @@ repos:
         additional_dependencies: [flake8-typing-imports==1.14.0]
         args: [--min-python-version=3.8]
 -   repo: https://github.com/hhatto/autopep8
-    rev: v2.3.1
+    rev: v2.3.2
     hooks:
     -   id: autopep8
 -   repo: https://github.com/asottile/reorder-python-imports
@@ -52,6 +52,6 @@ repos:
     hooks:
     -   id: mypy
 -   repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: 'v19.1.6'
+    rev: 'v19.1.7'
     hooks:
     -   id: clang-format
