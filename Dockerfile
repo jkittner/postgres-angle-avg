@@ -1,5 +1,5 @@
 ARG VERSION=16
-FROM postgres:${VERSION}-bullseye
+FROM postgres:${VERSION}-bookworm
 
 ARG VERSION=16
 
