@@ -9,13 +9,13 @@ This can be useful for e.g. component averaging of wind directions (not taking t
 
 ## Setup
 
-version 0.1.1
+version 0.1.2
 
 ### Compilation
 
-This was tested against PostgreSQL 12, 13, 14, 15 and 16. The function has to be compiled into a shared object.
+This was tested against PostgreSQL 12, 13, 14, 15, 16, 17 and 18. The function has to be compiled into a shared object.
 
-Pre-compiled binaries can be found here: https://github.com/jkittner/postgres-angle-avg/releases/tag/0.1.1
+Pre-compiled binaries can be found here: https://github.com/jkittner/postgres-angle-avg/releases/tag/0.1.2
 
 On Linux:
 
